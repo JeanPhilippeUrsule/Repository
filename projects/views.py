@@ -3,11 +3,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from projects.forms import ProjectFormulary, TutorFormulary, PaperFormulary
 
-# Create your views here.
+#Vamos a tener 2 tipos de vistas, una general y una detallada, mas los diferentesformularios y buscador
 
-#Vamos a tener 2 tipos de vistas, una general y una detallada
-
-#Vistas generales 
+#Vistas generales______________________________ 
 
 def index(request):
     return render(request,'index.html')
@@ -35,7 +33,7 @@ def tutor_index(request):
     
     return render(request,'tutor_index.html',context)
 
-#Vistas detalladas 
+#Vistas detalladas________________________________ 
 
 def project_detail(request, pk):
     project = Project.objects.get(pk=pk)#el pk nos permite usar el numero del projecto va ser util en un loop
@@ -60,7 +58,7 @@ def tutor_detail(request,pk):
         
     return render(request,'tutor_detail.html', context)
 
-#Formularios
+#Formularios________________________________________
 
 def projectFormulary(request):
     
@@ -132,7 +130,7 @@ def paperFormulary(request):
         
     return render(request, 'paperFormulary.html',{'myFormulary':myFormulary})
 
-#Buscador
+#Buscador____________________________________________
 
 def searchProject(request):
     
