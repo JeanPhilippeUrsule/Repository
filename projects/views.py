@@ -10,7 +10,7 @@ from projects.forms import ProjectFormulary, TutorFormulary, PaperFormulary
 #Vistas generales 
 
 def index(request):
-    return render(request,'projects/index.html')
+    return render(request,'index.html')
 
 def project_index(request):
     projects = Project.objects.all()#levantamos todos los objetos de la class Project
@@ -33,7 +33,7 @@ def tutor_index(request):
         'tutors': tutors
     }
     
-    return render(request,'projects/tutor_index.html',context)
+    return render(request,'tutor_index.html',context)
 
 #Vistas detalladas 
 
@@ -80,11 +80,11 @@ def projectFormulary(request):
                               technology = information['technology']
                               )#datos del proyecto
             project.save()#guardamos todo
-            return render(request,'projects/project_index.html')
+            return render(request,'project_index.html')
     else:
         myFormulary= ProjectFormulary()
         
-    return render(request, 'projects/projectFormulary.html',{'myFormulary':myFormulary})
+    return render(request, 'projectFormulary.html',{'myFormulary':myFormulary})
 
 def tutorFormulary(request):
     
@@ -104,11 +104,11 @@ def tutorFormulary(request):
                           )
             tutor.save()
             
-            return render(request,'projects/tutor_index.html')
+            return render(request,'tutor_index.html')
     else:
         myFormulary= TutorFormulary()
         
-    return render(request, 'projects/tutorFormulary.html',{'myFormulary':myFormulary})
+    return render(request, 'tutorFormulary.html',{'myFormulary':myFormulary})
 
 def paperFormulary(request):
     
@@ -126,11 +126,11 @@ def paperFormulary(request):
                           )
             
             paper.save()
-            return render(request,'projects/paper_index.html')
+            return render(request,'paper_index.html')
     else:
         myFormulary= PaperFormulary()
         
-    return render(request, 'projects/paperFormulary.html',{'myFormulary':myFormulary})
+    return render(request, 'paperFormulary.html',{'myFormulary':myFormulary})
 
 #Buscador
 
@@ -140,12 +140,12 @@ def searchProject(request):
         title= request.GET['title']#Variable titulo
         project= Project.objects.filter(title__icontains=title)#variable del buscador
         
-        return render(request, 'projects/index.html', {'project':project, 'query':title})
+        return render(request, 'searchResult.html', {'project':project, 'title':title})
     
     else:
         answer='No data send'
     
-    return render(request, 'projects/index.html', {'answer':answer})
+    return render(request, 'searchResult.html', {'answer':answer})
 
 def projectSearch(request):
-    return render(request, 'projects/index.html')
+    return render(request, 'searchProject.html')

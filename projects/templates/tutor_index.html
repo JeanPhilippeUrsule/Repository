@@ -1,0 +1,26 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<!-- Aqui va lo que va cambiar-->
+
+<h1>Tutors</h1>
+<div class="row">
+{% for tutor in tutors %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">{{ tutor.name_student}}</h5>
+                <p class="card-text">{{ tutor.title }}</p>
+                <a href="{% url 'tutor_detail' tutor.pk %}"
+                   class="btn btn-primary">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

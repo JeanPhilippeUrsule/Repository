@@ -1,0 +1,15 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h1>{{ tutor.name_student }}</h1>
+<div class="row">
+    <div class="row">
+        <h5>About the project of the student:</h5>
+        <p>{{ tutor.description }}</p>
+        <br>
+    </div>
+</div>
+{% endblock %}
