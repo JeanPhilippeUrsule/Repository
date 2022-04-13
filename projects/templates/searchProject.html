@@ -1,0 +1,21 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<!-- Aqui va lo que va cambiar-->
+
+<!-- Formulario creacion curso-->
+<p>You can search a project</p>
+<form action='/projects/searchProject/' method='GET'>
+
+    <input type='text' name='title' id='title'>
+
+    <input type='submit' value='Search' class="btn btn-primary">
+
+</form>
+
+
+
+{% endblock %}
