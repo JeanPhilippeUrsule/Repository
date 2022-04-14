@@ -20,7 +20,7 @@ class Tutor(models.Model):
     date_end = models.DateField()
     description = models.TextField()
 
-#Creacion de una class de los ppaper que publique
+#Creacion de una class de los paper que publique
 class Paper(models.Model):
     title = models.CharField(max_length=200)
     date = models.DateField()
