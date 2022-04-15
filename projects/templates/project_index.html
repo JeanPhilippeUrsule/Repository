@@ -18,10 +18,16 @@
                 <a href="{% url 'project_detail' project.pk %}"
                    class="btn btn-primary">
                     Read More
+                    
                 </a>
             </div>
         </div>
     </div>
     {% endfor %}
+   <br>
+    <button>
+        <a href="{% url 'ProjectFormulary' %}" class="btn btn-success">New Project</a>
+    
+    </button>
 </div>
 {% endblock %}

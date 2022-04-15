@@ -64,9 +64,9 @@ def projectFormulary(request):
     
     if request.method == 'POST': #Vamos el metodo POST
         
-        myFormulary = ProjectFormulary(request.POST)
+        myFormulary = ProjectFormulary(request.POST)#aca llega toda la info
         
-        if myFormulary.is_valid(): #comprobamos que cumplimos los requisitos
+        if myFormulary.is_valid(): #comprobamos que cumplimos los requisitos de Django
             
             information = myFormulary.cleaned_data #vamos a acceder a este informacion como diccionario
             
@@ -75,7 +75,8 @@ def projectFormulary(request):
                               date_end = information['date_end'],
                               resume = information['resume'],
                               description = information['description'],
-                              technology = information['technology']
+                              technology = information['technology'],
+                              #image = information['image']
                               )#datos del proyecto
             project.save()#guardamos todo
             return render(request,'project_index.html')
@@ -147,3 +148,58 @@ def searchProject(request):
 
 def projectSearch(request):
     return render(request, 'searchProject.html')
+
+#Delete______________________________________________
+
+def deleteProject(request, project_title):
+    #Recibe el titulo del projecto que vamos a eleminar
+    project = Project.objects.get(title=project_title)
+    project.delete()
+    
+    #volvemos al menu
+    projects = Project.objects.all()#levantamos todos los objetos de la class Project
+    context = {
+        'projects': projects
+    }#creamos el diccionario
+    return render(request, 'project_index.html', context) #linkeamos el diccionario con un html
+
+
+
+#Edit__________________________________________________
+
+def editProject(request, project_title):
+    
+      #Recibe el titulo del projecto que vamos a modificar
+       project = Project.objects.get(title=project_title)
+       
+       if request.method == 'POST': #Vamos el metodo POST
+        
+        myFormulary = ProjectFormulary(request.POST)#aca llega toda la info
+        
+        if myFormulary.is_valid(): #comprobamos que cumplimos los requisitos de Django
+            
+            information = myFormulary.cleaned_data #vamos a acceder a este informacion como diccionario
+            
+            project.title = information['title'] 
+            project.date_start = information['date_start']
+            project.date_end = information['date_end']
+            project.resume = information['resume']
+            project.description = information['description']
+            project.technology = information['technology']
+            #project.image = information['image']
+                              
+            project.save()
+            
+            return render(request,'project_index.html')
+       else:
+            #Creo el formulario con los datos que voy a modificar
+            myFormulary= ProjectFormulary(initial={'title':project.title,
+                                                   'date_start':project.date_start,
+                                                   'date_end':project.date_end,
+                                                   'resume': project.resume,
+                                                   'description': project.description,
+                                                   'technology': project.technology
+                                                   })
+        
+       return render(request, 'projectFormulary.html',{'myFormulary':myFormulary, 'project_title': project_title})
+    

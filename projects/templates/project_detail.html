@@ -15,6 +15,9 @@
         <br>
         <h5>Technology used:</h5>
         <p>{{ project.technology }}</p>
+
+        <a href="{% url 'DeleteProject' project.title %}" class="btn btn-outline-danger btn-sm">Delete</a>
+        <a href="{% url 'EditProject' project.title %}" class="btn btn-outline-secondary btn-sm">Edit</a>
     </div>
 </div>
 {% endblock %}

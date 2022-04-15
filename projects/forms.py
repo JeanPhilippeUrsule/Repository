@@ -7,6 +7,7 @@ class ProjectFormulary(forms.Form):
     resume = forms.CharField(max_length=50)
     description = forms.CharField()
     technology = forms.CharField(max_length=50)
+    #image = forms.FilePathField(path="/img")
     
 class TutorFormulary(forms.Form):
     name_student = forms.CharField(max_length=200)
