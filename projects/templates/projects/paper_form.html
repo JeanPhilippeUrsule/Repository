@@ -1,0 +1,22 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h1>Add Papers</h1>
+<body>
+
+    <form>
+        {% csrf_token %}
+
+        {{form.as_p}}
+       
+        <input type="submit", value="Send", class="btn btn-primary">
+    </form>
+
+    
+</body>
+
+
+{% endblock %}

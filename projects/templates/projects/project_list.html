@@ -1,0 +1,31 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<!-- Aqui va lo que va cambiar-->
+<body>
+
+    <h1>Projects</h1>
+    <ul>
+        {% for project in object_list %}
+
+            <li>
+                <p>TITLE: {{ project.title }} </p>
+                <p> 
+                    <a href="{% url 'Detail' project.id %}">Detail</a> | 
+                    <a href="{% url 'Edit' project.id %}">Edit</a> | 
+                    <a href="{% url 'Delete' project.id %}">Delete</a> 
+                    <a href="{% url 'New'  %}">New</a> | 
+                
+                </p> 
+            </li>
+
+        {% endfor %}
+    </ul>
+    <button>
+    <a href="{% url 'project_index'  %}" class="btn btn-success">Projets</a> 
+    </button>   | 
+</body>
+{% endblock %}

@@ -8,8 +8,12 @@
 <div class="row">
     <div class="row">
         <h5>About the paper:</h5>
-        <p>{{ paper.description }}</p>
+        <p><i>{{ paper.description }}</i></p>
         <br>
+        <p>
+            <a href="{% url 'PaperList' %}">Return</a>
+        </p>
+    
     </div>
 </div>
 {% endblock %}

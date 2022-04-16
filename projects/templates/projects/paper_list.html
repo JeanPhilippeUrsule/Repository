@@ -1,0 +1,29 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<!-- Aqui va lo que va cambiar-->
+<body>
+
+    <h1>Papers</h1>
+    <ul>
+        {% for paper in object_list %}
+
+            <li>
+                <p>TITLE: {{ paper.title }} </p>
+                <p> 
+                    <a href="{% url 'Detail' paper.id %}">Detail</a> | 
+                    <a href="{% url 'Edit' paper.id %}">Edit</a> | 
+                    <a href="{% url 'Delete' paper.id %}">Delete</a> |
+                    <a href="{% url 'New'  %}">New</a> 
+                
+                </p> 
+            </li>
+
+        {% endfor %}
+    </ul>
+    <a href="{% url 'paper_index'  %}" class="btn btn-success">Papers</a> 
+</body>
+{% endblock %}

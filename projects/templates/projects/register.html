@@ -1,0 +1,19 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<!-- Aqui va lo que va cambiar-->
+    <body>
+        <form action="" method="POST">
+            
+            {%csrf_token%}
+            
+            {{form.as_p}}
+
+
+            <button type="submit"> Register</button>
+     </body>
+     {% endblock %}
+    

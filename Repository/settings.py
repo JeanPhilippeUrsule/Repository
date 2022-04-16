@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Repository.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/Downloads/ClaseCoder/Repository/Entrega1_Ursule/projects/templates'],
+        'DIRS': ['/Downloads/ClaseCoder/Repository/Entrega1_Ursule/projects/templates/projects'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

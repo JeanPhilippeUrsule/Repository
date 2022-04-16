@@ -19,5 +19,10 @@
         <a href="{% url 'DeleteProject' project.title %}" class="btn btn-outline-danger btn-sm">Delete</a>
         <a href="{% url 'EditProject' project.title %}" class="btn btn-outline-secondary btn-sm">Edit</a>
     </div>
+
+    <button>
+        <a href="{% url 'project_index'  %}" class="btn btn-success">Return</a> 
+    </button>
+    
 </div>
 {% endblock %}

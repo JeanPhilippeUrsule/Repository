@@ -17,4 +17,16 @@ urlpatterns = [
     path('searchProject/', views.searchProject),
     path('deleteProject/<project_title>/', views.deleteProject, name='DeleteProject'),
     path('editProject/<project_title>/', views.editProject, name='EditProject'),
+    
+    path('project/list', views.ProjectList.as_view(), name='ProjectList'),
+    
+    path('paper/list', views.PaperList.as_view(), name='PaperList'),
+    path(r'^(?P<pk>\d+)$', views.PaperDetail.as_view(), name='Detail'),
+    path(r'^new$', views.PaperCreate.as_view(), name='New'),
+    path(r'^edit/(?P<pk>\d+)$', views.PaperUpdate.as_view(), name='Edit'),
+    path(r'^delete/(?P<pk>\d+)$', views.PaperDelete.as_view(), name='Delete'),
+    
+    path('login', views.login_request, name='Login'),
+    path('register', views.register, name='Register'),
+    path('logout', views.logout_request, name='Logout'),
 ]
