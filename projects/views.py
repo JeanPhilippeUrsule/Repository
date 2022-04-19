@@ -1,5 +1,5 @@
 from dataclasses import fields
-from projects.models import Project, Paper, Tutor
+from projects.models import Project, Paper, Tutor, Avatar
 from django.http import HttpResponse
 from django.shortcuts import render
 from projects.forms import ProjectFormulary, TutorFormulary, PaperFormulary
@@ -19,7 +19,10 @@ from django.contrib.auth import login, logout, authenticate
 #Vistas generales______________________________ 
 
 def index(request):
-    return render(request,'projects/index.html')
+    
+    avatares = Avatar.objects.filter(user=request.user.id)
+    
+    return render(request,'projects/index.html', {'url':avatares[0].imagen.url})
 
 def project_index(request):
     projects = Project.objects.all()#levantamos todos los objetos de la class Project

@@ -5,5 +5,9 @@ from .models import *
 #Necesito los permisos de administrador para las " class " que tengo
 
 admin.site.register(Project)
+
 admin.site.register(Paper)
+
 admin.site.register(Tutor)
+
+admin.site.register(Avatar)
