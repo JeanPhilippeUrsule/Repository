@@ -9,11 +9,14 @@
     <div class="row">
         <h5>About the paper:</h5>
         <p><i>{{ paper.description }}</i></p>
-        <br>
-        <p>
-            <a href="{% url 'paper_index' %}">Return</a>
-        </p>
+        
+        
     </div>
-
 </div>
+<a href="{% url 'EditPaper' paper.title %}" class="btn btn-outline-secondary btn-sm">Edit</a>
+<a href="{% url 'DeletePaper' paper.title %}" class="btn btn-outline-danger btn-sm">Delete</a>
+
+<p>
+    <a href="{% url 'paper_index' %}">Return</a>
+</p>
 {% endblock %}

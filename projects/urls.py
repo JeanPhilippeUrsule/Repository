@@ -16,8 +16,13 @@ urlpatterns = [
     path('paperFormulary', views.paperFormulary, name='PaperFormulary'),
     path('projectSearch/', views.projectSearch, name='projectSearch'),
     path('searchProject/', views.searchProject),
+   
     path('deleteProject/<project_title>/', views.deleteProject, name='DeleteProject'),
     path('editProject/<project_title>/', views.editProject, name='EditProject'),
+    path('deletePaper/<paper_title>/', views.deletePaper, name='DeletePaper'),
+    path('editPaper/<paper_title>/', views.editPaper, name='EditPaper'),
+    path('deleteTutor/<tutor_student>/', views.deleteTutor, name='DeleteTutor'),
+    path('editTutor/<tutor_student>/', views.editTutor, name='EditTutor'),
     
     path('project/list', views.ProjectList.as_view(), name='ProjectList'),
     

@@ -178,6 +178,29 @@ def deleteProject(request, project_title):
     }#creamos el diccionario
     return render(request, 'projects/project_index.html', context) #linkeamos el diccionario con un html
 
+def deleteTutor(request, tutor_student):
+    
+    tutor = Tutor.objects.get(name_student=tutor_student)
+    tutor.delete()
+    
+    tutors = Tutor.objects.all()#levantamos todos los objetos de la class Project
+    context = {
+        'tutors': tutors
+    }#creamos el diccionario
+    return render(request, 'projects/tutor_index.html', context) #linkeamos el diccionario con un html
+
+def deletePaper(request, paper_title):
+    #Recibe el titulo del projecto que vamos a eleminar
+    paper = Paper.objects.get(title=paper_title)
+    paper.delete()
+    
+    #volvemos al menu
+    papers = Paper.objects.all()#levantamos todos los objetos de la class Project
+    context = {
+        'papers': papers
+    }#creamos el diccionario
+    return render(request, 'projects/paper_index.html', context) #linkeamos el diccionario con un html
+
 #Edit__________________________________________________
 
 def editProject(request, project_title):
@@ -215,7 +238,66 @@ def editProject(request, project_title):
                                                    })
         
        return render(request, 'projects/projectFormulary.html',{'myFormulary':myFormulary, 'project_title': project_title})
+ 
+def editTutor(request,tutor_student):
     
+    tutor = Tutor.objects.get(name_student=tutor_student)
+        
+    if request.method == 'POST':
+        
+     myFormulary = TutorFormulary(request.POST)
+        
+     if myFormulary.is_valid():
+         information = myFormulary.cleaned_data #vamos a cceder a este informacion como diccionario
+            
+         tutor.name_student = information['name_student']
+         tutor.title= information['title'] 
+         tutor.date_start = information['date_start']
+         tutor.date_end = information['date_end']
+         tutor.description = information['description']
+            
+         tutor.save()
+            
+     return render(request,'projects/tutor_index.html')
+        
+    else: 
+        myFormulary= TutorFormulary({'name_student': tutor.name_student,
+                          'title': tutor.title, 
+                          'date_start': tutor.date_start,
+                          'date_end': tutor.date_end,
+                          'description': tutor.description
+            })
+       
+    return render(request, 'projects/tutorFormulary.html',{'myFormulary':myFormulary, 'tutor_student': tutor_student})
+    
+def editPaper(request, paper_title):
+    
+    paper = Paper.objects.get(title=paper_title)
+    
+    if request.method == 'POST':
+        
+     myFormulary = PaperFormulary(request.POST)
+        
+     if myFormulary.is_valid():
+         information = myFormulary.cleaned_data 
+            
+         paper.title = information['title']
+         paper.date = information['date']
+         paper.description = information['description']
+            
+         paper.save()
+            
+     return render(request,'projects/paper_index.html')
+        
+    else:
+         myFormulary= PaperFormulary(initial={'title':paper.title, 
+                          'date': paper.date,
+                          'description': paper.description
+            })
+            
+    return render(request, 'projects/paperFormulary.html',{'myFormulary':myFormulary, 'paper_title': paper_title})
+
+   
 #Listas genericas para Paper
 
 class PaperList(ListView):

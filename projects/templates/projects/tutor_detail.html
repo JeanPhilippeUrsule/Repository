@@ -10,9 +10,11 @@
         <h5>About the project of the student:</h5>
         <p>{{ tutor.description }}</p>
         <br>
+       
     </div>
 </div>
-
+<a href="{% url 'EditTutor' tutor.name_student %}" class="btn btn-outline-secondary btn-sm">Edit</a>
+<a href="{% url 'DeleteTutor' tutor.name_student %}" class="btn btn-outline-danger btn-sm">Delete</a>
 <p>
     <a href="{% url 'tutor_index'  %}">Return</a> 
 </p>
