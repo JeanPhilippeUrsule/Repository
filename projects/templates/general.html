@@ -22,18 +22,14 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container-fluid">
-                <a class="nav-link" href="{% url 'blog_index' %}">Blog</a>
+                
                 <a class="navbar-brand" href="{% url 'Index' %}">Index</a>
                 <a class="navbar-brand" href="{% url 'project_index' %}">Projects</a>
-                <a class="navbar-brand" href="{% url 'paper_index' %}">Paper</a>
-                <a class="navbar-brand" href="{% url 'tutor_index' %}">Tutor</a>
-                
-                <a class="navbar-brand" href="{% url 'PaperFormulary' %}">Formulary Paper</a>
-                <a class="navbar-brand" href="{% url 'TutorFormulary' %}">Formulary Tutor</a>
-                <a class="navbar-brand" href="{% url 'projectSearch' %}">Project Search</a>
-                
-                
+                <a class="navbar-brand" href="{% url 'paper_index' %}">Papers</a>
+                <a class="navbar-brand" href="{% url 'tutor_index' %}">Students</a>
 
+                <a class="nav-link" href="{% url 'blog_index' %}">Blog</a>
+                
                 {% if not request.user.is_authenticated %}
                 <a class="btn btn-primary" href="{% url 'Login' %}">Login</a>
                 {% endif %}

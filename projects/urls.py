@@ -3,7 +3,7 @@ from projects import views
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    path('', views.index, name='Index'),
+    path("", views.index, name='Index'),
     path('project', views.project_index, name='project_index'),
     path('project/<int:pk>/', views.project_detail, name='project_detail'),
     path('tutor/', views.tutor_index, name='tutor_index'),

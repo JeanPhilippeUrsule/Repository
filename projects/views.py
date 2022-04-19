@@ -1,4 +1,5 @@
 from dataclasses import fields
+import logging
 from projects.models import Project, Paper, Tutor, Avatar
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -17,13 +18,13 @@ from django.contrib.auth import login, logout, authenticate
 #Vamos a tener 2 tipos de vistas, una general y una detallada, mas los diferentesformularios y buscador
 
 #Vistas generales______________________________ 
-
 def index(request):
     
     #avatares = Avatar.objects.filter(user=request.user.id)
     
     #return render(request,'projects/index.html', {'url':avatares[0].imagen.url})
     return render(request,'projects/index.html')
+
 def project_index(request):
     projects = Project.objects.all()#levantamos todos los objetos de la class Project
     context = {

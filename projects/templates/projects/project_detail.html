@@ -15,14 +15,14 @@
         <br>
         <h5>Technology used:</h5>
         <p>{{ project.technology }}</p>
-
-        <a href="{% url 'DeleteProject' project.title %}" class="btn btn-outline-danger btn-sm">Delete</a>
+        
         <a href="{% url 'EditProject' project.title %}" class="btn btn-outline-secondary btn-sm">Edit</a>
+        <a href="{% url 'DeleteProject' project.title %}" class="btn btn-outline-danger btn-sm">Delete</a>
+        
     </div>
-
-    <button>
-        <a href="{% url 'project_index'  %}" class="btn btn-success">Return</a> 
-    </button>
-    
 </div>
+
+<p>
+    <a href="{% url 'project_index'  %}">Return</a> 
+</p>
 {% endblock %}
