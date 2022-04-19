@@ -11,7 +11,7 @@ def blog_index(request):
     context = {
         'posts': posts,
     }
-    return render(request, 'blog_index.html', context)
+    return render(request, 'blog/blog_index.html', context)
 
 #Vista general de los posts pero por categorias
 def blog_category(request, category):
@@ -20,7 +20,7 @@ def blog_category(request, category):
         'category': category,
         'posts': posts
     }
-    return render(request, 'blog_category.html', context)
+    return render(request, 'blog/blog_category.html', context)
 
 #Vista de los posts con la posibilidad de comentar
 def blog_detail(request, pk):
@@ -44,5 +44,5 @@ def blog_detail(request, pk):
         'form': form,
     }
 
-    return render(request, 'blog_detail.html', context)
+    return render(request, 'blog/blog_detail.html', context)
 
