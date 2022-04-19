@@ -16,9 +16,8 @@
                 <p> 
                     <a href="{% url 'Detail' project.id %}">Detail</a> | 
                     <a href="{% url 'Edit' project.id %}">Edit</a> | 
-                    <a href="{% url 'Delete' project.id %}">Delete</a> 
-                    <a href="{% url 'New'  %}">New</a> | 
-                
+                    <a href="{% url 'Delete' project.id %}">Delete</a> | 
+                    <a href="{% url 'New'  %}">New</a> 
                 </p> 
             </li>
 
@@ -26,6 +25,6 @@
     </ul>
     <button>
     <a href="{% url 'project_index'  %}" class="btn btn-success">Projets</a> 
-    </button>   | 
+    </button>   
 </body>
 {% endblock %}

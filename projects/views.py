@@ -20,10 +20,10 @@ from django.contrib.auth import login, logout, authenticate
 
 def index(request):
     
-    avatares = Avatar.objects.filter(user=request.user.id)
+    #avatares = Avatar.objects.filter(user=request.user.id)
     
-    return render(request,'projects/index.html', {'url':avatares[0].imagen.url})
-
+    #return render(request,'projects/index.html', {'url':avatares[0].imagen.url})
+    return render(request,'projects/index.html')
 def project_index(request):
     projects = Project.objects.all()#levantamos todos los objetos de la class Project
     context = {
@@ -247,7 +247,7 @@ class ProjectList(ListView):
 #Login,Logout,Register
 def login_request(request):
     #capturamos el post
-    if request.method == "POST":
+    if request.method == 'POST':
         #inicio el uso del formulario de autenticación que me da Django
         #me toma dos parámetros el request y los datos que toma del request
         form = AuthenticationForm(request, data = request.POST)
@@ -256,7 +256,7 @@ def login_request(request):
             usuario = form.cleaned_data.get('username')
             contra = form.cleaned_data.get('password')
 
-            user = authenticate(username = usuario , password = contra)
+            user = authenticate(username = usuario, password = contra)
             #print(1)
             if user is not None:
                 login(request, user)#toma 2 atributos, request y user
@@ -290,7 +290,3 @@ def register(request):
 
       return render(request, 'projects/register.html', {'form': form} )
   
-def logout_request(request):
-    logout(request)
-    messages.info(request, 'Logged out successfully!')
-    return redirect('main:index')
