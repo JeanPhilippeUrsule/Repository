@@ -1,9 +1,8 @@
-from dataclasses import fields
-import logging
+from django.contrib import messages
 from projects.models import Project, Paper, Tutor, Avatar
 from django.http import HttpResponse
 from django.shortcuts import render
-from projects.forms import ProjectFormulary, TutorFormulary, PaperFormulary
+from projects.forms import ProjectFormulary, TutorFormulary, PaperFormulary, UserRegisterForm, UserEditForm
 
 #Ahora vamos a simplificar lo que teniamos usando funciones de Django
 from django.views.generic import ListView
@@ -14,6 +13,7 @@ from django.urls import reverse_lazy
 #Aca agregamos lo del Login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
+from django.shortcuts import redirect
 
 #Vamos a tener 2 tipos de vistas, una general y una detallada, mas los diferentesformularios y buscador
 
@@ -169,6 +169,7 @@ def projectSearch(request):
 def deleteProject(request, project_title):
     #Recibe el titulo del projecto que vamos a eleminar
     project = Project.objects.get(title=project_title)
+    
     project.delete()
     
     #volvemos al menu
@@ -360,16 +361,15 @@ def register(request):
       
       if request.method == "POST":
 
-            form = UserCreationForm(request.POST)
+            form = UserRegisterForm(request.POST)
 
             if form.is_valid():
                   username = form.cleaned_data['username']
                   form.save()
 
-                  return render(request, 'projects/index.html', {'message': 'user created'})
+                  return render(request, 'projects/index.html', {'mensaje': 'user created'})
 
       else: 
             form = UserRegisterForm()
 
       return render(request, 'projects/register.html', {'form': form} )
-  
