@@ -1,4 +1,3 @@
-from django.contrib import messages
 from projects.models import Project, Paper, Tutor, Avatar
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -20,10 +19,10 @@ from django.shortcuts import redirect
 #Vistas generales______________________________ 
 def index(request):
     
-    #avatares = Avatar.objects.filter(user=request.user.id)
+    avatares = Avatar.objects.filter(user=request.user.id)
     
-    #return render(request,'projects/index.html', {'url':avatares[0].imagen.url})
-    return render(request,'projects/index.html')
+    return render(request,'projects/index.html', {'url':avatares[0].imagen.url})
+    #return render(request,'projects/index.html')
 
 def project_index(request):
     projects = Project.objects.all()#levantamos todos los objetos de la class Project
