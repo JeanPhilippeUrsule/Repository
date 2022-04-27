@@ -1,0 +1,24 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<!-- Aqui va lo que va cambiar-->
+
+<div>
+    <h1>Edit Profile</h1>
+    <h2> de {{user}}</h2>
+</div>
+<div>
+    <form action="" method="POST"> {% csrf_token %}
+        
+        <table>
+            {{myFormulary.as_table}}    
+        </table>
+
+        <input type="submit", value="Enviar">
+    </form>
+</div>
+
+{% endblock %}

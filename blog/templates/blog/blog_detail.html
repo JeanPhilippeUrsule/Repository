@@ -10,12 +10,20 @@
     <h1>{{ post.title }}</h1>
     <small>
         {{ post.created_on.date }} |&nbsp;
-        Categories:&nbsp;
+
+            <span class="section-heading-under">Published by <em><b>{{post.author}}</b></em> in
+       
+                Categories:&nbsp;
+        
         {% for category in post.categories.all %}
         <a href="{% url 'blog_category' category.name %}">
             {{ category.name }}
         </a>&nbsp;
         {% endfor %}
+
+        <p class="mb-0">
+                <img class="mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{post.image.url}}" alt="" width="400" height="400">
+              </p>
     </small>
     <p>{{ post.body | linebreaks }}</p>
     <h3>Leave a comment:</h3>

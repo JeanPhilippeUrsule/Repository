@@ -40,6 +40,7 @@ class UserRegisterForm(UserCreationForm):
 
 class UserEditForm(UserCreationForm): 
     
+    userame = forms.CharField()
     email = forms.EmailField(label='modifie email')
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label= 'Password confirmation', widget=forms.PasswordInput)

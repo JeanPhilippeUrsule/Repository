@@ -336,15 +336,15 @@ def login_request(request):
         form = AuthenticationForm(request, data = request.POST)
             
         if form.is_valid():
-            usuario = form.cleaned_data.get('username')
-            contra = form.cleaned_data.get('password')
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
 
-            user = authenticate(username = usuario, password = contra)
+            user = authenticate(username = username, password = password)
             #print(1)
             if user is not None:
                 login(request, user)#toma 2 atributos, request y user
                 
-                return render(request, 'projects/index.html', {'mensaje': f'Welcome {usuario}'})
+                return render(request, 'projects/index.html', {'mensaje': f'Welcome {username}'})
             else:
                 #print(2)
                 return render(request, 'projects/index.html', {'mensaje':'Error in the data'})
@@ -372,3 +372,28 @@ def register(request):
             form = UserRegisterForm()
 
       return render(request, 'projects/register.html', {'form': form} )
+  
+def editProfile(request):
+    #With el login
+    user = request.user
+    
+    if request.method == 'POST':
+        myFormulary = UserEditForm(request.POST)
+        
+        if myFormulary.is_valid():
+            information = myFormulary.cleaned_data
+            
+            #data we will provide to the change
+            user.username = information['username']
+            user.email = information['email']
+            user.password1 = information['password1']
+            user.password2 = information['password2']
+            user.save()
+        
+        return render(request, 'projects/register.html')
+    
+    else:
+        myFormulary=UserEditForm(initial={'email':user.email})
+        
+    return render(request, 'projects/editUser.html', {'myFormulary': myFormulary, 'user': user})
+        
