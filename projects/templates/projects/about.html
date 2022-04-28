@@ -1,0 +1,31 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<!-- Aqui va lo que va cambiar-->
+
+<section class="page-section about-heading">
+    <div class="container">
+      <img class="mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static '/img/about.jpg' %}" alt="" width="300" height="300">
+      <div class="about-heading-content">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 mx-auto">
+            <div class="bg-faded rounded p-5">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper">Jean-Philippe Ursule </span>
+                <br>
+                <span class="section-heading-lower">Geologist</span>
+              </h2>
+              <p>I am a PhD in Sedimentology with 9 years of experience in oil and gas industry as Reservoir Geologist. I am mainly involved in projects dealing with primary, secondary and tertiary oil recovery processes in mature fields in Argentina. I have a strong knowledge in reservoir characterization integrating data from sedimentary cores analysis to seismic interpretation and 3D multi-scale static modeling in different tectonic settings. Highly enthusiastic about sedimentology processes, depositional systems and geomodeling methodologies, I am always willing to face new technical challenges in response of the needs of the oil industry.
+            </p>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}

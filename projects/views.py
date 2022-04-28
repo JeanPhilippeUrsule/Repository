@@ -47,6 +47,9 @@ def tutor_index(request):
     
     return render(request,'projects/tutor_index.html',context)
 
+def about(request):
+    return render(request, "projects/about.html")
+
 #Vistas detalladas________________________________ 
 
 def project_detail(request, pk):

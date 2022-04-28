@@ -10,6 +10,7 @@ urlpatterns = [
     path('tutor/<int:pk>/', views.tutor_detail, name='tutor_detail'),
     path('paper/', views.paper_index, name='paper_index'),
     path('paper/<int:pk>/', views.paper_detail, name='paper_detail'),
+    path('about/', views.about, name='about'),
     
     path('projectFormulary', views.projectFormulary, name='ProjectFormulary'),
     path('tutorFormulary', views.tutorFormulary, name='TutorFormulary'),
