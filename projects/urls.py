@@ -25,8 +25,6 @@ urlpatterns = [
     path('deleteTutor/<tutor_student>/', views.deleteTutor, name='DeleteTutor'),
     path('editTutor/<tutor_student>/', views.editTutor, name='EditTutor'),
     
-    path('project/list', views.ProjectList.as_view(), name='ProjectList'),
-    
     path('paper/list', views.PaperList.as_view(), name='PaperList'),
     path(r'^(?P<pk>\d+)$', views.PaperDetail.as_view(), name='Detail'),
     path(r'^new$', views.PaperCreate.as_view(), name='New'),
